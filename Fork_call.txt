@@ -1,0 +1,32 @@
+#include<stdio.h>
+//#include<string.h>
+#include<stdlib.h>
+#include<errno.h>
+#include<unistd.h>
+main()
+{
+pid_t pid;
+pid=fork();
+int i;
+if(pid==0)
+{
+printf("\nchild process %d",pid);
+for(i=0;i<2;i++)
+{
+printf("\nchild process %d :: current process pid %d parent process pid %d",i,getpid(),getppid());sleep(10);
+}
+}
+else
+{
+printf("\nprocess pid %d",pid);
+int j;
+for(j=0;j<2;j++)
+{
+printf("\nparent process %d :: current process pid %d parent process pid %d",j,getpid(),getppid());
+sleep(10);}
+}
+}
+
+
+
+

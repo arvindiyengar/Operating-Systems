@@ -1,0 +1,34 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<unistd.h>
+main()
+{
+int ch;
+char s[20];
+printf("enter 1 for mft and 2 for mvt");
+printf("enter the choice");
+scanf("%d",&ch);
+switch(ch)
+{
+case 1: 
+mft();
+break;
+case 2:
+printf("enter the string");
+scanf("%s",s);
+mvt(s);
+break;
+}}
+
+void mft()
+{
+system("ls");
+system("date");
+}
+void mvt(char *s)
+{
+puts(s);
+system(s);
+}
+

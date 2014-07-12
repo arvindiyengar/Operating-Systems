@@ -1,0 +1,35 @@
+#include<stdlib.h>
+#include<errno.h>
+#include<string.h>
+#include<sys/types.h>
+#include<sys/ipc.h>
+#include<sys/msg.h>
+#include<stdio.h>
+int main (void)
+{
+int msgid;
+int len;
+key_t key;
+char txt[100];
+key=333;
+if((msgid=msgget(key,02666))==-1)
+{
+perror("msgget");
+exit(1);
+}
+printf("Message Queue Created");
+while(1)
+{
+printf("\n Waiting for message from Sender");
+if(msgrcv(msgid,&txt,sizeof(txt),0,0)==-1)
+perror("msgrcv");
+printf("\n Message Rec %s ",txt);
+if(strcmp(txt,"bye")==0)
+break;
+}
+msgctl(msgid,IPC_RMID,NULL);
+printf("\n Exit");
+return 0;
+}
+
+
